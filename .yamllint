@@ -1,0 +1,23 @@
+---
+extends: default
+
+rules:
+  truthy:
+  ## Add yes/no to allowed truthy values
+    allowed-values:
+      - 'true'
+      - 'false'
+      - 'yes'
+      - 'no'
+## Add rules required by ansible-lint
+  comments:
+    min-spaces-from-content: 1
+  comments-indentation: false
+  braces:
+    max-spaces-inside: 1
+  octal-values:
+    forbid-implicit-octal: true
+    forbid-explicit-octal: true
+## custom rules
+  line-length:
+    max: 180

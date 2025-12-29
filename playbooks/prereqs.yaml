@@ -13,9 +13,9 @@
 
     # K8s sysctl tuning (baseline)
     k8s_sysctls:
-      - { name: "net.bridge.bridge-nf-call-iptables",  value: 1 }
+      - { name: "net.bridge.bridge-nf-call-iptables", value: 1 }
       - { name: "net.bridge.bridge-nf-call-ip6tables", value: 1 }
-      - { name: "net.ipv4.ip_forward",                 value: 1 }
+      - { name: "net.ipv4.ip_forward", value: 1 }
 
     # Baseline packages that commonly help with ops/debugging
     base_packages:
@@ -37,13 +37,13 @@
       ansible.builtin.apt:
         update_cache: true
         cache_valid_time: 3600
-  
+
     - name: Perform full system upgrade (dist-upgrade)
       ansible.builtin.apt:
         upgrade: dist
         autoremove: true
         autoclean: true
-  
+
     - name: Check if reboot is required
       ansible.builtin.stat:
         path: /var/run/reboot-required
