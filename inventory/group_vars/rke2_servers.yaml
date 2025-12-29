@@ -1,0 +1,17 @@
+---
+# Only server-specific overrides. rke2_type is auto-derived by the role.
+# rke2_type: server  # optional; role already calculates this based on group membership
+
+# If you want extra TLS SANs beyond cluster.local + rke2_api_ip:
+rke2_additional_sans:
+  - kube01-master01.tanx95.us
+  - kube01-master02.tanx95.us
+  - kube01-master03.tanx95.us
+
+# Optional: disable packaged components on servers
+rke2_disable:
+  - rke2-snapshot-controller
+
+# Optional: labels applied to nodes (this is the var the template uses)
+k8s_node_label:
+  - home-lab.tanx95.us/role=control-plane"

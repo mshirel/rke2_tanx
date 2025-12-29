@@ -1,0 +1,4 @@
+---
+rke2_server_options:
+  - cluster-init: true
+

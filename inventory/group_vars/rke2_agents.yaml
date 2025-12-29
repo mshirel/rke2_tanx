@@ -1,0 +1,9 @@
+---
+rke2_type: agent
+
+# Worker node labels (examples)
+rke2_node_labels:
+  - "home-lab.tanx95.us/role=worker"
+
+# Optional: reserve space for later tuning
+rke2_kubelet_options: []

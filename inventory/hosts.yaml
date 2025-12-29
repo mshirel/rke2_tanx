@@ -1,0 +1,17 @@
+all:
+  children:
+
+    rke2_cluster:
+      children:
+
+        rke2_servers:
+          hosts:
+            kube01-master01.tanx95.us:
+            kube01-master02.tanx95.us:
+            kube01-master03.tanx95.us:
+
+        rke2_agents:
+          hosts:
+            kube01-worker01.tanx95.us:
+            kube01-worker02.tanx95.us:
+            kube01-worker03.tanx95.us:
