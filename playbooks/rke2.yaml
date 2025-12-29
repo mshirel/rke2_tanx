@@ -18,13 +18,45 @@
           Ensure ~/.secrets is sourced (e.g., from ~/.profile) before running.
       when: (lookup('ansible.builtin.env', 'RKE2_TOKEN') | length) < 20
 
-- name: Deploy RKE2 (servers first, then agents)
-  hosts: rke2_cluster
+- name: Deploy RKE2 servers
+  hosts: rke2_servers
   become: true
   gather_facts: true
   serial: 1
 
-  tasks:
-    - name: Install / configure RKE2 via lablabs role
-      ansible.builtin.include_role:
-        name: lablabs.rke2
+  pre_tasks:
+    - name: Ensure ansible_default_ipv6 has expected keys
+      ansible.builtin.set_fact:
+        ansible_default_ipv6: >-
+          {{
+            ansible_default_ipv6 | default({}) |
+            combine({'address':'', 'gateway':'', 'interface':''}, recursive=True)
+          }}
+
+    - name: Gather service facts (required by lablabs.rke2 active_server detection)
+      ansible.builtin.service_facts:
+
+  roles:
+    - lablabs.rke2
+
+
+- name: Deploy RKE2 agents
+  hosts: rke2_agents
+  become: true
+  gather_facts: true
+  serial: 2   # or 1 if you want ultra-safe
+
+  pre_tasks:
+    - name: Ensure ansible_default_ipv6 has expected keys
+      ansible.builtin.set_fact:
+        ansible_default_ipv6: >-
+          {{
+            ansible_default_ipv6 | default({}) |
+            combine({'address':'', 'gateway':'', 'interface':''}, recursive=True)
+          }}
+
+    - name: Gather service facts (required by lablabs.rke2 active_server detection)
+      ansible.builtin.service_facts:
+
+  roles:
+    - lablabs.rke2

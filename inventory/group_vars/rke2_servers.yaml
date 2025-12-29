@@ -2,7 +2,7 @@
 # Only server-specific overrides. rke2_type is auto-derived by the role.
 # rke2_type: server  # optional; role already calculates this based on group membership
 
-rke2_ha_mode: true
+rke2_ha_mode: false
 rke2_api_ip: 10.20.120.20      # pick an unused VIP on 10.20.120.0/23
 # if the role supports iface selection (names vary by role):
 rke2_api_iface: eth0

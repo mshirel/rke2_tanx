@@ -5,6 +5,13 @@ ansible_ssh_private_key_file: ~/.ssh/id_ed25519
 ansible_become: true
 ansible_become_method: sudo
 
+# Make Sure that the ipv6 var is defined even if ipv6 isn't configured on the servers
+# Some hosts have no IPv6 default route; role expects ansible_default_ipv6.address to exist
+ansible_default_ipv6:
+  address: ""
+  gateway: ""
+  interface: ""
+
 # Timezone consistency (important for logs & certs)
 timezone: America/Chicago
 
