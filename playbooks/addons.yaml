@@ -1,0 +1,10 @@
+---
+- name: Cluster addons (placeholder)
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Addon stage not yet defined
+      ansible.builtin.debug:
+        msg: >-
+          Addon deployment is intentionally empty for now. Extend this playbook
+          with ingress/controllers as needed after the core cluster is healthy.
