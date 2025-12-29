@@ -14,4 +14,4 @@ rke2_disable:
 
 # Optional: labels applied to nodes (this is the var the template uses)
 k8s_node_label:
-  - home-lab.tanx95.us/role=control-plane"
+  - "home-lab.tanx95.us/role=control-plane"

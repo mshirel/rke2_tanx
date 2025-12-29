@@ -19,7 +19,7 @@ rke2_cni: canal          # simple + stable to start
 disable_kube_proxy: false
 
 # Ingress
-rke2_ingress_controller: traefik
+### rke2_ingress_controller: traefik
 
 # Set my server and agent ansbile group names
 rke2_servers_group_name: rke2_servers
