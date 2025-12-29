@@ -85,12 +85,7 @@
         path: /etc/fstab
         regexp: '^(\s*[^#\n]+\s+[^#\n]+\s+swap\s+[^#\n]+\s+[^#\n]+\s+[^#\n]+)$'
         replace: '# \1'
-      register: fstab_swap
-
-    - name: Warn if swap entries were found and commented
-      ansible.builtin.debug:
-        msg: "Swap entries were found in /etc/fstab and commented out."
-      when: fstab_swap is changed
+      notify: Warn if swap entries were found and commented
 
     # --- Kernel modules for container networking ---
     - name: Ensure kernel modules config file exists
@@ -136,3 +131,8 @@
       ansible.builtin.fail:
         msg: "Swap is still enabled on this node. Kubernetes requires swap to be disabled."
       when: (swap_lines.stdout | int) > 0
+
+  handlers:
+    - name: Warn if swap entries were found and commented
+      ansible.builtin.debug:
+        msg: "Swap entries were found in /etc/fstab and commented out."
