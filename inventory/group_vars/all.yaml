@@ -11,8 +11,8 @@ timezone: America/Chicago
 # RKE2 version pinning (VERY important)
 rke2_version: v1.29.3+rke2r1
 
-# Cluster Token
-rke2_token: "{{ lookup('ansible.builtin.env', 'RKE2_TOKEN') | quote }}"
+# Cluster Token (expects RKE2_TOKEN to be exported in your shell environment)
+rke2_token: "{{ lookup('ansible.builtin.env', 'RKE2_TOKEN') }}"
 
 # Networking
 rke2_cni: canal          # simple + stable to start
