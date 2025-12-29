@@ -1,0 +1,5 @@
+---
+# Convenience entrypoint to run the full cluster bring-up
+- import_playbook: prereqs.yaml
+- import_playbook: rke2.yaml
+- import_playbook: addons.yaml
