@@ -1,5 +1,10 @@
 ---
 # Convenience entrypoint to run the full cluster bring-up
-- import_playbook: prereqs.yaml
-- import_playbook: rke2.yaml
-- import_playbook: addons.yaml
+- name: Run Kubernetes prerequisites
+  import_playbook: prereqs.yaml
+
+- name: Deploy RKE2
+  import_playbook: rke2.yaml
+
+- name: Configure addons
+  import_playbook: addons.yaml
