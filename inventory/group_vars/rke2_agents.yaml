@@ -2,7 +2,7 @@
 rke2_type: agent
 
 # Worker node labels (examples)
-rke2_node_labels:
+k8s_node_label:
   - "home-lab.tanx95.us/role=worker"
 
 # Optional: reserve space for later tuning

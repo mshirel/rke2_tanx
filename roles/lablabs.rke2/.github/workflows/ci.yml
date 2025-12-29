@@ -32,14 +32,9 @@ jobs:
             volumes: "rw"
     steps:
       - name: checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           path: "lablabs.rke2"
-
-      - name: Remove unnecessary files
-        run: |
-          sudo rm -rf /usr/share/dotnet
-          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
       - name: Set up Python 3
         uses: actions/setup-python@v6
@@ -72,17 +67,12 @@ jobs:
             volumes: "rw"
     steps:
       - name: checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           path: "lablabs.rke2"
 
-      - name: Remove unnecessary files
-        run: |
-          sudo rm -rf /usr/share/dotnet
-          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-
       - name: Set up Python 3
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
           python-version: "3.x"
 
@@ -114,12 +104,12 @@ jobs:
   #           volumes: "rw"
   #   steps:
   #     - name: checkout
-  #       uses: actions/checkout@v6
+  #       uses: actions/checkout@v4
   #       with:
   #         path: 'lablabs.rke2'
 
   #     - name: Set up Python 3
-  #       uses: actions/setup-python@v6
+  #       uses: actions/setup-python@v5
   #       with:
   #         python-version: '3.x'
 
@@ -152,12 +142,12 @@ jobs:
   #           volumes: "rw"
   #   steps:
   #     - name: checkout
-  #       uses: actions/checkout@v6
+  #       uses: actions/checkout@v4
   #       with:
   #         path: 'lablabs.rke2'
 
   #     - name: Set up Python 3
-  #       uses: actions/setup-python@v6
+  #       uses: actions/setup-python@v5
   #       with:
   #         python-version: '3.x'
 

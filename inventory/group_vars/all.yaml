@@ -12,10 +12,11 @@ timezone: America/Chicago
 rke2_version: v1.29.3+rke2r1
 
 # Cluster Token
-rke2_token: "{{ lookup('ansible.builtin.env', 'RKE2_TOKEN') | quote }}"
+rke2_token: "{{ lookup('ansible.builtin.env', 'RKE2_TOKEN') }}"
 
 # Networking
-rke2_cni: canal          # simple + stable to start
+rke2_cni: 
+  - canal          # simple + stable to start
 disable_kube_proxy: false
 
 # Ingress
@@ -37,3 +38,5 @@ rke2_service_cidr:
 
 rke2_additional_sans: []
 k8s_node_label: []
+
+rke2_node_ip: "{{ ansible_default_ipv4.address }}"

@@ -2,8 +2,15 @@
 # Only server-specific overrides. rke2_type is auto-derived by the role.
 # rke2_type: server  # optional; role already calculates this based on group membership
 
+rke2_ha_mode: true
+rke2_api_ip: 10.20.120.20      # pick an unused VIP on 10.20.120.0/23
+# if the role supports iface selection (names vary by role):
+rke2_api_iface: eth0
+
 # If you want extra TLS SANs beyond cluster.local + rke2_api_ip:
 rke2_additional_sans:
+  - 10.20.120.20
+  - kube01-api.tanx95.us
   - kube01-master01.tanx95.us
   - kube01-master02.tanx95.us
   - kube01-master03.tanx95.us
